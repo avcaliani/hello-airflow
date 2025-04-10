@@ -8,8 +8,6 @@ This project is an experiment using [Apache Airflow](https://airflow.apache.org/
 I've desined a simple DAG using the basic operator to explore what Airflow can do.  
 Of course, in real life situations you'd use other operators to probably manage external services.
 
-![diagram](.docs/diagram.jpg)
-
 ## Quick Start
 
 Let's start the Airflow 🚀
@@ -21,11 +19,26 @@ docker-compose up -d
 > Airflow will be running at `http://localhost:8080/admin/`.  
 > To stop, just type `docker-compose down`
 
+![screenshot](.docs/screenshot.png)
+
 ## Appendix
 
-### Screenshots
+### Dev Setup
 
-![screenshot](.docs/screenshot.png)
+In case you want to check and/or update the scripts.
+
+```bash
+# 👇 Setting PyEnv version
+pyenv local 3.8.20
+
+# 👇 Virtual Environment
+python -m venv .venv \
+  && source .venv/bin/activate \
+  && pip install --upgrade pip
+
+# 👇 Dependencies
+pip install -r requirements-dev.txt
+```
 
 ### Using Local Operator
 
