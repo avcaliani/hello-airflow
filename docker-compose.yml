@@ -1,32 +1,21 @@
-version: '3'
 services:
 
-  db:
-    container_name: postgres
-    restart: always
-    image: postgres:12
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: pass4admin
-      POSTGRES_DB: airflow
-
+  # Local Installation Doc 👇
+  # https://airflow.apache.org/docs/apache-airflow/stable/start.html
+  # Docker Image Doc 👇 
+  # https://airflow.apache.org/docs/docker-stack/index.html
+  
+  # https://hub.docker.com/r/apache/airflow
+  # Airflow Home: /opt/airflow/
   airflow:
+    image: airflow-dev
+    build: .
     container_name: airflow
-    restart: always
-    depends_on:
-      - db
-    build:
-      context: .
-    image: dev-airflow
     ports:
-      - 8080:80
+      - 8080:8080
     environment:
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: "postgresql+psycopg2://admin:pass4admin@db:5432/airflow"
-      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"
-      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
-      DATALAKE_HOST: "$DATALAKE_HOST_PATH/datalake"
+      DATALAKE_HOST: "/data"
     volumes:
-      - ./airflow/dags/:/airflow/dags/
-      - ./airflow/scripts/:/airflow/scripts/
-      - ./datalake/:/datalake/
-      - /var/run/:/var/run/
+      - ./airflow/dags/:/opt/airflow/dags
+      - ./airflow/scripts/:/opt/airflow/scripts/
+      - ./data:/data
