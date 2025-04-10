@@ -75,3 +75,6 @@ services:
 - [Medium: Airflow Basic Configuration](https://medium.com/@apratamamia/airflow-basic-configuration-for-production-environment-2f69ab0c6f2c)
 - [Blog: How to use Docker Operator?](https://marclamberti.com/blog/how-to-use-dockeroperator-apache-airflow/)
 - [The Simpsons API](https://www.postman.com/simpsons-team)
+- Airflow Operators
+  - [Astronomer - What is an Operator?](https://www.astronomer.io/docs/learn/what-is-an-operator)
+  - [Some Operators](https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/index.html)
