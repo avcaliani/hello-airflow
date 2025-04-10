@@ -1,19 +1,7 @@
-FROM python:3
+FROM apache/airflow:2.10.5-python3.8
 
-ENV AIRFLOW_HOME="/airflow"
-WORKDIR $AIRFLOW_HOME
+# I did that to remove the Web App authentication 😅
+# ref: https://stackoverflow.com/a/70161587/13039203
+RUN echo -e "\nAUTH_ROLE_PUBLIC = 'Admin'" >> "$AIRFLOW_HOME/webserver_config.py"
 
-RUN pip install -q \
-    docker==4.2.1 \
-    psycopg2==2.8.5 \
-    typing_extensions==3.7.4.2 \
-    apache-airflow==1.10.10 
-
-RUN airflow version
-
-RUN printf 'airflow initdb \n' > init.sh && \
-    printf 'airflow webserver -p 80 & \n' >> init.sh && \
-    printf 'airflow scheduler & \n' >> init.sh && \
-    printf 'tail -f /dev/null \n' >> init.sh
-
-CMD /bin/bash $AIRFLOW_HOME/init.sh
+CMD ["standalone"]
