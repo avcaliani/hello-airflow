@@ -14,8 +14,8 @@ services:
     ports:
       - 8080:8080
     environment:
-      DATALAKE_HOST: "/data"
+      LAKE_PATH: "/data"
     volumes:
-      - ./airflow/dags/:/opt/airflow/dags
-      - ./airflow/scripts/:/opt/airflow/scripts/
+      - ./dags/:/opt/airflow/dags
+      - ./scripts/:/opt/airflow/scripts/
       - ./data:/data
