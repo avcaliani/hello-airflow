@@ -1,3 +1,5 @@
+<img src="https://airflow.apache.org/docs/apache-airflow/1.10.6/_images/pin_large.png" align="right" height="64px"/>
+
 # Hello Airflow 👋
 
 ![License](https://img.shields.io/github/license/avcaliani/hello-airflow?color=lightseagreen)
